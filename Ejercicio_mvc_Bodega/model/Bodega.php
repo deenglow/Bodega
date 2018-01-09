@@ -91,6 +91,17 @@ class Bodega {
         $this->hasHotel = $hasHotel;
     }
 
+    
+     public function getAll(){
+
+        $consulta = $this->conexion->prepare("SELECT idBodega, direccion, nombre, email, telefono, nombreContacto, fechaFundacion, hasRestaurante, hasHotel FROM  " . $this->table);
+        $consulta->execute();
+        /* Fetch all of the remaining rows in the result set */
+        $resultados = $consulta->fetchAll();
+        $this->conexion = null; //cierre de conexión
+        return $resultados;
+
+    }
 
     
 }

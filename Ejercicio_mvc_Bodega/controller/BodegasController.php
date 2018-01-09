@@ -49,22 +49,22 @@ class BodegasController{
     public function index(){
         
         //Creamos el objeto empleado
-        $empleado=new Empleado($this->conexion);
+        $bodega=new Bodega($this->conexion);
         
         //Conseguimos todos los empleados
-        $empleados=$empleado->getAll();
+        $bodegas=$bodega->getAll();
        
         //Cargamos la vista index y le pasamos valores
         $this->view("index",array(
-            "empleados"=>$empleados,
-            "titulo" => "PHP MVC"
+            "bodegas"=>$bodegas,
+            "titulo" => "BODEGA"
         ));
     }
 
 
     //CARGA LA VISTA DETALLE
      public function detalle(){
-        if(!isset($_GET["detalle"])){
+       /* if(!isset($_GET["detalle"])){
             //Creamos el objeto empleado
             $empleado=new Empleado($this->conexion);
         
@@ -78,7 +78,7 @@ class BodegasController{
             ));
             
 
-        }
+        }*/
         
     }
 
@@ -89,7 +89,7 @@ class BodegasController{
     *
     */
     public function crear(){
-        if(isset($_POST["nombre"])){
+        /*if(isset($_POST["nombre"])){
             //Creamos un usuario
             $empleado=new Empleado($this->conexion);
             $empleado->setNombre($_POST["nombre"]);
@@ -98,12 +98,12 @@ class BodegasController{
             $empleado->setTelefono($_POST["telefono"]);
             $save=$empleado->save();
         }
-        header('Location: index.php');
+        header('Location: index.php');*/
     }
    
     //FUNCION ACTUALIZAR
     public function actualizar(){
-        if(!isset($_GET["actualizar"])){          
+        /*if(!isset($_GET["actualizar"])){          
              //Creamos un usuario
             $empleado=new Empleado($this->conexion);   
             $empleado->setNombre($_POST["nombre"]);  
@@ -112,18 +112,18 @@ class BodegasController{
             $empleado->setTelefono($_POST["telefono"]);
             $actualizar=$empleado->actualizar($_GET["id"]);
         }
-        header('Location: index.php');
+        header('Location: index.php');*/
         
     }
 
     //FUNCION DELETE
     public function delete (){
-        if(!isset($_GET["delete"])){
+       /* if(!isset($_GET["delete"])){
             $empleado=new Empleado($this->conexion);
             $empleado->delete($_GET["id"]);
         }
 
-        header('Location: index.php');
+        header('Location: index.php');*/
     }
     
     
@@ -133,7 +133,7 @@ class BodegasController{
     */
     public function view($vista,$datos){
         $data = $datos;  
-        require_once  __DIR__ . "/../view/" . $vista . "View.php";
+        require_once  __DIR__ . "/../view/" . $vista . "indexView.php";
 
     }
 
