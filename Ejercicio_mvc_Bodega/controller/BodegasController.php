@@ -23,8 +23,8 @@ class BodegasController{
             case "index" :
                 $this->index();
                 break;
-            case "detalle" :
-                $this->detalle();
+            case "detalleCrearBodega" :
+                $this->detalleCrearBodega();
                 break;
             case "alta" :
                 $this->crear();
@@ -63,22 +63,14 @@ class BodegasController{
 
 
     //CARGA LA VISTA DETALLE
-     public function detalle(){
-       /* if(!isset($_GET["detalle"])){
-            //Creamos el objeto empleado
-            $empleado=new Empleado($this->conexion);
-        
-            //Conseguimos todos los empleados
-            $empleadoSeleccionado=$empleado->getEmpleado($_GET["id"]);
-
+     public function detalleCrearBodega(){
+        if(!isset($_GET["detalleCrearBodega"])){
+            
             //Cargamos la vista index y le pasamos valores
-            $this->view("detalle",array(
-                "empleado"=>$empleadoSeleccionado,
-                "titulo" => "PHP MVC"
-            ));
+            $this->view("detalleCrearBodega",null);
             
 
-        }*/
+        }
         
     }
 
@@ -89,16 +81,20 @@ class BodegasController{
     *
     */
     public function crear(){
-        /*if(isset($_POST["nombre"])){
+        if(isset($_POST["direccion"])){
             //Creamos un usuario
-            $empleado=new Empleado($this->conexion);
-            $empleado->setNombre($_POST["nombre"]);
-            $empleado->setApellidos($_POST["apellidos"]);
-            $empleado->setEmail($_POST["email"]);
-            $empleado->setTelefono($_POST["telefono"]);
-            $save=$empleado->save();
+            $bodega=new Bodega($this->conexion);
+            $bodega->setDireccion($_POST["direccion"]);
+            $bodega->setNombre($_POST["nombre"]);
+            $bodega->setEmail($_POST["email"]);
+            $bodega->setTelefono($_POST["telefono"]);
+            $bodega->setNombreContacto($_POST["nombrePersonaContacto"]);
+            $bodega->setFechaFundacion($_POST["fechaFundacion"]);
+            $bodega->setHasRestaurante($_POST["hasRestaurante"]);
+            $bodega->setHasHotel($_POST["hasHotel"]);
+            $save=$bodega->save();
         }
-        header('Location: index.php');*/
+        header('Location: index.php');
     }
    
     //FUNCION ACTUALIZAR
@@ -118,12 +114,12 @@ class BodegasController{
 
     //FUNCION DELETE
     public function delete (){
-       /* if(!isset($_GET["delete"])){
-            $empleado=new Empleado($this->conexion);
-            $empleado->delete($_GET["id"]);
+        if(!isset($_GET["delete"])){
+            $bodega=new Bodega($this->conexion);
+            $bodega->delete($_GET["id"]);
         }
 
-        header('Location: index.php');*/
+        header('Location: index.php');
     }
     
     
@@ -133,7 +129,7 @@ class BodegasController{
     */
     public function view($vista,$datos){
         $data = $datos;  
-        require_once  __DIR__ . "/../view/" . $vista . "indexView.php";
+        require_once  __DIR__ . "/../view/" . $vista . "View.php";
 
     }
 

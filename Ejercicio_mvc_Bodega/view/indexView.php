@@ -22,18 +22,19 @@
             <hr/>
         </div>
         <section class="col-lg-7 usuario" style="height:400px;overflow-y:scroll;">
-            <?php foreach($data["empleados"] as $empleado) {?>
-                <?php echo $empleado["id"]; ?> -
-                <?php echo $empleado["nombre"]; ?> -
-                <?php echo $empleado["email"]; ?> -
-                <?php echo $empleado["telefono"]; ?>&nbsp;
-                <a href="index.php?controller=empleados&action=delete&id=<?php echo $empleado['id']; ?>" class="btn btn-success">Eliminar</a>&nbsp;
-                <a href="index.php?controller=empleados&action=detalle&id=<?php echo $empleado['id']; ?>" class="btn btn-success">
+            <?php foreach($data["bodegas"] as $bodega) {?>
+                <?php echo $bodega["idBodega"]; ?> -
+                <?php echo $bodega["nombre"]; ?> -
+                <?php echo $bodega["email"]; ?> -
+                <?php echo $bodega["telefono"]; ?>&nbsp;
+                <a href="index.php?controller=bodegas&action=delete&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-success">Eliminar</a>&nbsp;
+                <a href="index.php?controller=bodegas&action=detalle&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-success">
                 Detalle</a>
                 <hr/>
             <?php } ?>
+               <a href="index.php?controller=bodegas&action=detalleCrearBodega" class="btn btn-success">AÑADIR</a>&nbsp;
         </section>
-		
+ 
         <footer class="col-lg-12">
             <hr/>
            Ejercicio_mvc_Bodegas - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>

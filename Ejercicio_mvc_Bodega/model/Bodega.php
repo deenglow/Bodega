@@ -103,5 +103,30 @@ class Bodega {
 
     }
 
+    public function save(){
+
+        $consulta = $this->conexion->prepare("INSERT INTO bodegas (direccion, nombre, email, telefono, nombreContacto, fechaFundacion, hasRestaurante, hasHotel)
+                                        VALUES (:direccion, :nombre,:email,:telefono, :nombreContacto, :fechaFundacion, :hasRestaurante, :hasHotel)");
+        $save = $consulta->execute(array(
+            "direccion" => $this->direccion,
+            "nombre" => $this->nombre,
+            "email" => $this->email,
+            "telefono" => $this->telefono,
+            "nombreContacto" => $this->nombreContacto,
+            "fechaFundacion" => $this->fechaFundacion,
+            "hasRestaurante" => $this->hasRestaurante,
+            "hasHotel" => $this->hasHotel
+        ));
+        $this->conexion = null;
+
+        return $save;
+    }
+    
+    public function delete($id){
+        $consulta = $this->conexion->prepare("DELETE FROM bodegas WHERE idBodega = " . $id);
+        $consulta->execute();
+        $this->conexion = null; 
+
+    }
     
 }
