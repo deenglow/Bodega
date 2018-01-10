@@ -129,4 +129,32 @@ class Bodega {
 
     }
     
+     public function getBodega($id){
+        $consulta = $this->conexion->prepare("SELECT idBodega, direccion, nombre, email, telefono, nombreContacto, fechaFundacion, hasRestaurante, hasHotel FROM  " . $this->table ." WHERE idBodega = " . $id );
+        $consulta->execute();
+        /* Fetch all of the remaining rows in the result set */
+        $resultados = $consulta->fetchObject();
+        $this->conexion = null; //cierre de conexión
+        return $resultados;
+
+    }
+    
+    public function actualizar() {
+        $consulta = $this->conexion->prepare("UPDATE bodegas SET direccion = :dir, nombre = :nom, email = :ema, telefono = :tel, nombreContacto = :nomConta, fechaFundacion = :fechFun, hasRestaurante = :hRest, hasHotel = :hHot WHERE idBodega = " . $this->idBodega);
+        $actualizar = $consulta->execute(array(
+            "dir" => $this->direccion,
+            "nom" => $this->nombre,
+            "ema" => $this->email,
+            "tel" => $this->telefono,
+            "nomConta" => $this->nombreContacto,
+            "fechFun" => $this->fechaFundacion,
+            "hRest" => $this->hasRestaurante,
+            "hHot" => $this->hasHotel
+        ));
+        
+        $this->conexion = null;
+        
+        return $actualizar;
+    }
+    
 }

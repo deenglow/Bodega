@@ -26,6 +26,9 @@ class BodegasController{
             case "detalleCrearBodega" :
                 $this->detalleCrearBodega();
                 break;
+            case "detalleBodega" :
+                $this->detalleBodega();
+                break;
             case "alta" :
                 $this->crear();
                 break;
@@ -73,6 +76,25 @@ class BodegasController{
         }
         
     }
+    
+    public function detalleBodega(){
+       if(!isset($_GET["detalleBodega"])){
+            //Creamos el objeto empleado
+            $bodega=new Bodega($this->conexion);
+        
+            //Conseguimos todos los empleados
+            $bodegaSeleccionada=$bodega->getBodega($_GET["id"]);
+
+            //Cargamos la vista index y le pasamos valores
+            $this->view("detalleBodega",array(
+                "bodega"=>$bodegaSeleccionada,
+                "titulo" => "INFO BODEGA"
+            ));
+            
+
+        }
+        
+    }
 
     
    /**
@@ -99,17 +121,31 @@ class BodegasController{
    
     //FUNCION ACTUALIZAR
     public function actualizar(){
-        /*if(!isset($_GET["actualizar"])){          
+        if(!isset($_GET["actualizar"])){          
              //Creamos un usuario
-            $empleado=new Empleado($this->conexion);   
-            $empleado->setNombre($_POST["nombre"]);  
-            $empleado->setApellidos($_POST["apellidos"]);         
-            $empleado->setEmail($_POST["email"]);
-            $empleado->setTelefono($_POST["telefono"]);
-            $actualizar=$empleado->actualizar($_GET["id"]);
+            $bodega=new Bodega($this->conexion);
+            $bodega->setDireccion($_GET["id"]);
+            $bodega->setDireccion($_POST["direccion"]);
+            $bodega->setNombre($_POST["nombre"]);
+            $bodega->setEmail($_POST["email"]);
+            $bodega->setTelefono($_POST["telefono"]);
+            $bodega->setNombreContacto($_POST["nombrePersonaContacto"]);
+            $bodega->setFechaFundacion($_POST["fechaFundacion"]);
+            $bodega->setHasRestaurante($_POST["hasRestaurante"]);
+            $bodega->setHasHotel($_POST["hasHotel"]);
+            $actualizar=$bodega->actualizar();
+            
+            
+            
+            $this->view('detalleBodega', array(
+                "bodega"=>$bodega,
+                "titulo" => "INFO BODEGA"
+            ));
+            
+       
         }
-        header('Location: index.php');*/
         
+
     }
 
     //FUNCION DELETE

@@ -17,7 +17,8 @@
         </style>
     </head>
     <body>
-        <form action="index.php?controller=bodegas&action=alta" method="post" class="col-lg-5">
+        <div class="container">
+        <form action="index.php?controller=bodegas&action=alta" method="post">
             <h3>Añadir Bodega</h3>
             <hr/>
             Direccion: <input type="text" name="direccion" class="form-control"/>
@@ -28,10 +29,13 @@
             Fecha fundacion: <input type="text" name="fechaFundacion" class="form-control"/>
             Tiene Restaurante: <input type="text" name="hasRestaurante" class="form-control"/>
             Tiene Hotel: <input type="text" name="hasHotel" class="form-control"/>
-            <input type="submit" value="enviar" class="btn btn-success"/>
+            <input type="submit" value="enviar" class="btn btn-success"/>   
         </form>
+        <a href="index.php?controller=bodegas&action=index" class="btn btn-success">Volver</a>    
+        </div>
+        
 	
-        <footer class="col-lg-12">
+        <footer class="container">
             <hr/>
            Ejemplo PHP + PDO + POO + MVC - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>
         </footer>
