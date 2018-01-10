@@ -1,12 +1,12 @@
 <?php
-class BodegasController{
+class VinosController{
     
     private $conectar;
     private $conexion;
 
     public function __construct() {
 		require_once  __DIR__ . "/../core/Conectar.php";
-        require_once  __DIR__ . "/../model/Bodega.php";
+        require_once  __DIR__ . "/../model/Vino.php";
         
         $this->conectar=new Conectar();
         $this->conexion=$this->conectar->conexion();
@@ -20,15 +20,7 @@ class BodegasController{
     public function run($accion){
         switch($accion)
         { 
-            case "index" :
-                $this->index();
-                break;
-            case "detalleCrearBodega" :
-                $this->detalleCrearBodega();
-                break;
-            case "detalleBodega" :
-                $this->detalleBodega();
-                break;
+
             case "alta" :
                 $this->crear();
                 break;
@@ -38,69 +30,10 @@ class BodegasController{
             case "delete" :
                 $this->delete();
                 break;
-            default:
-                $this->index();
-                break;
-        }
-    }
-    
-   /**
-    * Carga la página principal de empleados con la lista de
-    * empleados que consigue del modelo.
-    *
-    */ 
-    public function index(){
-        
-        //Creamos el objeto empleado
-        $bodega=new Bodega($this->conexion);
-        
-        //Conseguimos todos los empleados
-        $bodegas=$bodega->getAll();
-       
-        //Cargamos la vista index y le pasamos valores
-        $this->view("index",array(
-            "bodegas"=>$bodegas,
-            "titulo" => "BODEGA"
-        ));
-    }
-
-
-    //CARGA LA VISTA DETALLE
-     public function detalleCrearBodega(){
-        if(!isset($_GET["detalleCrearBodega"])){
-            
-            //Cargamos la vista index y le pasamos valores
-            $this->view("detalleCrearBodega",null);
-            
-
-        }
-        
-    }
-    
-    public function detalleBodega(){
-       if(!isset($_GET["detalleBodega"])){
            
-            include './model/Vino.php';
-
-            //Creamos el objeto empleado
-            $bodega=new Bodega($this->conexion);
-            $vino=new Vino($this->conexion);
-        
-            //Conseguimos todos los empleados
-            $bodegaSeleccionada=$bodega->getBodega($_GET["id"]);
-            $listaVinos=$vino->getAll($_GET["id"]);
-
-            //Cargamos la vista index y le pasamos valores
-            $this->view("detalleBodega",array(
-                "bodega"=>$bodegaSeleccionada,
-                "vinos"=>$listaVinos,
-                "titulo" => "INFO BODEGA"
-            ));
-            
-
         }
-        
     }
+    
 
     
    /**
@@ -109,7 +42,7 @@ class BodegasController{
     *
     */
     public function crear(){
-        if(isset($_POST["direccion"])){
+        /*if(isset($_POST["direccion"])){
             //Creamos un usuario
             $bodega=new Bodega($this->conexion);
             $bodega->setDireccion($_POST["direccion"]);
@@ -122,12 +55,12 @@ class BodegasController{
             $bodega->setHasHotel($_POST["hasHotel"]);
             $save=$bodega->save();
         }
-        header('Location: index.php');
+        header('Location: index.php');*/
     }
    
     //FUNCION ACTUALIZAR
     public function actualizar(){
-        if(!isset($_GET["actualizar"])){          
+        /*if(!isset($_GET["actualizar"])){          
              //Creamos un usuario
             $bodega=new Bodega($this->conexion);
             $bodega->setIdBodega($_GET["id"]);
@@ -142,7 +75,7 @@ class BodegasController{
             $actualizar=$bodega->actualizar();
 
             
-           /*$this->view('detalleBodega', array(
+           $this->view('detalleBodega', array(
                 "bodega"=>$bodega,
                 "titulo" => "INFO BODEGA"
             ));*/
@@ -150,16 +83,17 @@ class BodegasController{
         }
         
 
-    }
+ 
 
     //FUNCION DELETE
     public function delete (){
         if(!isset($_GET["delete"])){
-            $bodega=new Bodega($this->conexion);
-            $bodega->delete($_GET["id"]);
+            $vino=new Vino($this->conexion);
+            $vino->delete($_GET["id"]);
         }
 
-        header('Location: index.php');
+        header('Location:../view/detalleBodegaView.php ');
+        
     }
     
     

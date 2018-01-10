@@ -25,6 +25,12 @@ function cargarControlador($controller){
             $controllerObj=new BodegasController();
             break;
         
+        case 'vinos':
+            $strFileController='controller/VinosController.php';
+            require_once $strFileController;
+            $controllerObj=new VinosController();
+            break;
+        
         default:
             $strFileController='controller/BodegasController.php';
             require_once $strFileController;

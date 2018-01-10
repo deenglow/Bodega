@@ -142,7 +142,7 @@ class Bodega {
     public function actualizar() {
         $consulta = $this->conexion->prepare("UPDATE bodegas SET direccion = :dir, nombre = :nom, email = :ema, telefono = :tel, nombreContacto = :nomConta, fechaFundacion = :fechFun, hasRestaurante = :hRest, hasHotel = :hHot WHERE idBodega = " . $this->idBodega);
         $actualizar = $consulta->execute(array(
-            "dir" => $this->direccion,
+                "dir" => $this->direccion,
             "nom" => $this->nombre,
             "ema" => $this->email,
             "tel" => $this->telefono,

@@ -30,7 +30,7 @@
     <body>
         <div class="container">
         <form action="index.php?controller=bodegas&action=actualizar&id=<?php echo $data["bodega"]->idBodega;?>" method="post" >
-            <h3>Añadir Bodega</h3>
+            <h3><?php echo $data["titulo"];?></h3>
             <hr/>
             Direccion: <input type="text" name="direccion" class="form-control" value="<?php echo $data["bodega"]->direccion;?>" disabled/>
             Nombre: <input type="text" name="nombre" class="form-control" value="<?php echo $data["bodega"]->nombre;?>" disabled/>
@@ -44,7 +44,22 @@
         </form>
             <hr>
         <button class="btn btn-success" id="editar">Editar</button>     
-        <a href="index.php?controller=bodegas&action=index" class="btn btn-primary">Volver</a>    
+        <a href="index.php?controller=bodegas&action=index" class="btn btn-primary">Volver</a>
+        
+        <h3>LISTA DE SUS VINOS</h3>
+            <hr/>
+        <section style="height:400px;overflow-y:scroll;">
+            <?php foreach($data["vinos"] as $vino) {?>
+                <?php echo $vino["nombre"]; ?> -
+                <?php echo $vino["tipo"]; ?> -
+                <?php echo $vino["porcentajeAlcohol"]; ?>&nbsp;
+                <a href="index.php?controller=vinos&action=delete&id=<?php echo $vino['idVino']; ?>" class="btn btn-success">Eliminar</a>&nbsp;
+                <a href="index.php?controller=bodegas&action=detalleBodega&id=<?php echo $vino['idVino']; ?>" class="btn btn-success">
+                Detalle</a>
+                <hr/>
+            <?php } ?>
+               <a href="index.php?controller=bodegas&action=detalleCrearBodega" class="btn btn-success">AÑADIR</a>&nbsp;
+        </section>
         </div>
         
 	
