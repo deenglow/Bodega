@@ -141,11 +141,7 @@ class BodegasController{
             $bodega->setHasHotel($_POST["hasHotel"]);
             $actualizar=$bodega->actualizar();
 
-            
-           /*$this->view('detalleBodega', array(
-                "bodega"=>$bodega,
-                "titulo" => "INFO BODEGA"
-            ));*/
+            header('Location: index.php?controller=bodegas&action=detalleBodega&id='.$bodega->getIdBodega());
 
         }
         

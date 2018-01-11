@@ -50,15 +50,15 @@
             <hr/>
         <section style="height:400px;overflow-y:scroll;">
             <?php foreach($data["vinos"] as $vino) {?>
-                <?php echo $vino["nombre"]; ?> -
-                <?php echo $vino["tipo"]; ?> -
-                <?php echo $vino["porcentajeAlcohol"]; ?>&nbsp;
-                <a href="index.php?controller=vinos&action=delete&id=<?php echo $vino['idVino']; ?>" class="btn btn-success">Eliminar</a>&nbsp;
+                Nombre: <?php echo $vino["nombre"]; ?> -
+                Tipo: <?php echo $vino["tipo"]; ?> -
+                Porcentaje de Alcohol: <?php echo $vino["porcentajeAlcohol"]; ?> %&nbsp;
+                <a href="index.php?controller=vinos&action=delete&id=<?php echo $vino['idVino']; ?>&idBodega=<?php echo $data["bodega"]->idBodega;?>" class="btn btn-success">Eliminar</a>&nbsp;
                 <a href="index.php?controller=bodegas&action=detalleBodega&id=<?php echo $vino['idVino']; ?>" class="btn btn-success">
                 Detalle</a>
                 <hr/>
             <?php } ?>
-               <a href="index.php?controller=bodegas&action=detalleCrearBodega" class="btn btn-success">AÑADIR</a>&nbsp;
+               <a href="index.php?controller=vinos&action=detalleCrearVino&id=<?php echo $data["bodega"]->idBodega;?>" class="btn btn-success">AÑADIR</a>&nbsp;
         </section>
         </div>
         

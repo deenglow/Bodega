@@ -24,6 +24,9 @@ class VinosController{
             case "alta" :
                 $this->crear();
                 break;
+            case "detalleCrearVino" :
+                $this->detalleCrearVino();
+                break;
             case "actualizar" :
                 $this->actualizar();
                 break;
@@ -42,20 +45,19 @@ class VinosController{
     *
     */
     public function crear(){
-        /*if(isset($_POST["direccion"])){
-            //Creamos un usuario
-            $bodega=new Bodega($this->conexion);
-            $bodega->setDireccion($_POST["direccion"]);
-            $bodega->setNombre($_POST["nombre"]);
-            $bodega->setEmail($_POST["email"]);
-            $bodega->setTelefono($_POST["telefono"]);
-            $bodega->setNombreContacto($_POST["nombrePersonaContacto"]);
-            $bodega->setFechaFundacion($_POST["fechaFundacion"]);
-            $bodega->setHasRestaurante($_POST["hasRestaurante"]);
-            $bodega->setHasHotel($_POST["hasHotel"]);
-            $save=$bodega->save();
+        if(isset($_POST["nombre"])){
+
+            $vino=new Vino($this->conexion);
+            $vino->setNombre($_POST["nombre"]);
+            $vino->setDescripcion($_POST["descripcion"]);
+            $vino->setAnio($_POST["anio"]);
+            $vino->setTipo($_POST["tipo"]);
+            $vino->setPorcentajeAlcohol($_POST["porcentajeAlcohol"]);
+            $vino->setIdBodega($_POST["idBodega"]);
+
+            $save=$vino->save();
         }
-        header('Location: index.php');*/
+        header('Location: index.php?controller=bodegas&action=detalleBodega&id='.$vino->getIdBodega());
     }
    
     //FUNCION ACTUALIZAR
@@ -83,19 +85,24 @@ class VinosController{
         }
         
 
- 
+    public function detalleCrearVino(){
+        if(!isset($_GET["detalleCrearVino"])){
+            $id=$_GET["id"];
+            //Cargamos la vista index y le pasamos valores
+            $this->view("detalleCrearVino",$id);
+        }
+        
+    }   
 
     //FUNCION DELETE
     public function delete (){
         if(!isset($_GET["delete"])){
             $vino=new Vino($this->conexion);
             $vino->delete($_GET["id"]);
-        }
-
-        header('Location:../view/detalleBodegaView.php ');
-        
+            
+            header('Location: index.php?controller=bodegas&action=detalleBodega&id='.$_GET["idBodega"]);
+        }   
     }
-    
     
    /**
     * Crea la vista que le pasemos con los datos indicados.

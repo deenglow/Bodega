@@ -11,9 +11,18 @@ class Vino {
     private $anio;
     private $tipo;
     private $porcentajeAlcohol;
-    private $bodega;
+    private $idBodega;
     
-     function __construct($conexion) {
+    
+    function getIdBodega() {
+        return $this->idBodega;
+    }
+
+    function setIdBodega($idBodega) {
+        $this->idBodega = $idBodega;
+    }
+
+         function __construct($conexion) {
         $this->conexion = $conexion;
     }
     
@@ -41,10 +50,6 @@ class Vino {
         return $this->porcentajeAlcohol;
     }
 
-    function getBodega() {
-        return $this->bodega;
-    }
-
     function setIdVino($idVino) {
         $this->idVino = $idVino;
     }
@@ -69,9 +74,7 @@ class Vino {
         $this->porcentajeAlcohol = $porcentajeAlcohol;
     }
 
-    function setBodega($bodega) {
-        $this->bodega = $bodega;
-    }
+    
  
 
     public function getAll($id){
@@ -83,6 +86,27 @@ class Vino {
         $this->conexion = null; //cierre de conexión
         return $resultados;
 
+    }
+    
+     public function save(){
+
+        $consulta = $this->conexion->prepare("INSERT INTO vinos (nombre, descripcion, anio, tipo, porcentajeAlcohol, idBodega)
+                                        VALUES (:nombre, :descripcion, :anio, :tipo, :porcentajeAlcohol, :idBodega)");
+        
+        $bode=$this->Bodega;
+        
+        
+        $save = $consulta->execute(array(
+            "nombre" => $this->nombre,
+            "descripcion" => $this->descripcion,
+            "anio" => $this->anio,
+            "tipo" => $this->tipo,
+            "porcentajeAlcohol" => $this->porcentajeAlcohol,
+            "idBodega" => $this->idBodega
+        ));
+        $this->conexion = null;
+
+        return $save;
     }
     
     public function delete($id){

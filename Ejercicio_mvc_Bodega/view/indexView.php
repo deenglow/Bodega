@@ -22,9 +22,9 @@
         <section style="height:400px;overflow-y:scroll;">
             <?php foreach($data["bodegas"] as $bodega) {?>
                 <?php echo $bodega["idBodega"]; ?> -
-                <?php echo $bodega["nombre"]; ?> -
-                <?php echo $bodega["email"]; ?> -
-                <?php echo $bodega["telefono"]; ?>&nbsp;
+                Nombre Bodega: <?php echo $bodega["nombre"]; ?> -
+                Email: <?php echo $bodega["email"]; ?> -
+                Telefono: <?php echo $bodega["telefono"]; ?>&nbsp;
                 <a href="index.php?controller=bodegas&action=delete&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-success">Eliminar</a>&nbsp;
                 <a href="index.php?controller=bodegas&action=detalleBodega&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-success">
                 Detalle</a>
