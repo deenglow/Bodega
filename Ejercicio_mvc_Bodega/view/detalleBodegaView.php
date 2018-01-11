@@ -54,7 +54,7 @@
                 Tipo: <?php echo $vino["tipo"]; ?> -
                 Porcentaje de Alcohol: <?php echo $vino["porcentajeAlcohol"]; ?> %&nbsp;
                 <a href="index.php?controller=vinos&action=delete&id=<?php echo $vino['idVino']; ?>&idBodega=<?php echo $data["bodega"]->idBodega;?>" class="btn btn-success">Eliminar</a>&nbsp;
-                <a href="index.php?controller=bodegas&action=detalleBodega&id=<?php echo $vino['idVino']; ?>" class="btn btn-success">
+                <a href="index.php?controller=vinos&action=detalleVino&id=<?php echo $vino['idVino']; ?>" class="btn btn-success">
                 Detalle</a>
                 <hr/>
             <?php } ?>

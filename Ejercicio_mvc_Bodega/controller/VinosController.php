@@ -27,6 +27,9 @@ class VinosController{
             case "detalleCrearVino" :
                 $this->detalleCrearVino();
                 break;
+             case "detalleVino" :
+                $this->detalleVino();
+                break;
             case "actualizar" :
                 $this->actualizar();
                 break;
@@ -62,29 +65,21 @@ class VinosController{
    
     //FUNCION ACTUALIZAR
     public function actualizar(){
-        /*if(!isset($_GET["actualizar"])){          
+        if(!isset($_GET["actualizar"])){          
              //Creamos un usuario
-            $bodega=new Bodega($this->conexion);
-            $bodega->setIdBodega($_GET["id"]);
-            $bodega->setDireccion($_POST["direccion"]);
-            $bodega->setNombre($_POST["nombre"]);
-            $bodega->setEmail($_POST["email"]);
-            $bodega->setTelefono($_POST["telefono"]);
-            $bodega->setNombreContacto($_POST["nombrePersonaContacto"]);
-            $bodega->setFechaFundacion($_POST["fechaFundacion"]);
-            $bodega->setHasRestaurante($_POST["hasRestaurante"]);
-            $bodega->setHasHotel($_POST["hasHotel"]);
-            $actualizar=$bodega->actualizar();
-
+            $vino=new Vino($this->conexion);
+            $vino->setNombre($_POST["nombre"]);
+            $vino->setDescripcion($_POST["descripcion"]);
+            $vino->setAnio($_POST["anio"]);
+            $vino->setTipo($_POST["tipo"]);
+            $vino->setPorcentajeAlcohol($_POST["porcentajeAlcohol"]);
             
-           $this->view('detalleBodega', array(
-                "bodega"=>$bodega,
-                "titulo" => "INFO BODEGA"
-            ));*/
-
+            
+            $actualizar=$vino->actualizar();
         }
         
-
+    }
+    
     public function detalleCrearVino(){
         if(!isset($_GET["detalleCrearVino"])){
             $id=$_GET["id"];
@@ -93,6 +88,27 @@ class VinosController{
         }
         
     }   
+    
+    
+    public function detalleVino(){
+       if(!isset($_GET["detalleVino"])){
+           
+            //Creamos el objeto empleado
+            $v=new Vino($this->conexion);
+            $id=$_GET["id"];
+            //Conseguimos todos los empleados
+            $vino=$v->getVinoById($id);
+
+            //Cargamos la vista index y le pasamos valores
+            $this->view("detalleVino",array(
+                "vino"=>$vino,
+                "titulo" => "INFO VINO"
+            ));
+            
+
+        }
+        
+    }
 
     //FUNCION DELETE
     public function delete (){
