@@ -25,8 +25,8 @@
                 Nombre Bodega: <?php echo $bodega["nombre"]; ?> -
                 Email: <?php echo $bodega["email"]; ?> -
                 Telefono: <?php echo $bodega["telefono"]; ?>&nbsp;
-                <a href="index.php?controller=bodegas&action=delete&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-success">Eliminar</a>&nbsp;
-                <a href="index.php?controller=bodegas&action=detalleBodega&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-success">
+                <a href="index.php?controller=bodegas&action=delete&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-danger">Eliminar</a>&nbsp;
+                <a href="index.php?controller=bodegas&action=detalleBodega&id=<?php echo $bodega['idBodega']; ?>" class="btn btn-info">
                 Detalle</a>
                 <hr/>
             <?php } ?>

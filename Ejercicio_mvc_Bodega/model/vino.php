@@ -90,7 +90,7 @@ class Vino {
     
     public function getVinoById($id){
 
-        $consulta = $this->conexion->prepare("SELECT  nombre, descripcion, anio, tipo, porcentajeAlcohol, idBodega FROM " .$this->table. " WHERE idVino = " . $id);
+        $consulta = $this->conexion->prepare("SELECT idVino, nombre, descripcion, anio, tipo, porcentajeAlcohol , idBodega FROM " .$this->table. " WHERE idVino = " . $id);
         $consulta->execute();
         /* Fetch all of the remaining rows in the result set */
         $resultados = $consulta->fetchObject();
@@ -128,13 +128,13 @@ class Vino {
     }
     
         public function actualizar() {
-        $consulta = $this->conexion->prepare("UPDATE vinos SET  nombre = :nombre, descripcion = :descripcion, anio = :anio, tipo = :tipo, porcentajeAlcohol = :porcentajeAlcohol WHERE idBodega = " . $this->idVino);
+            $consulta = $this->conexion->prepare("UPDATE vinos SET  nombre = :nombre, descripcion = :descripcion, anio = :anio, tipo = :tipo, porcentajeAlcohol = :porcentajeAlcohol WHERE idVino = " . $this->idVino);
         $actualizar = $consulta->execute(array(
-            "nombre" => $this->nombre,
-            "descripcion" => $this->descripcion,
-            "anio" => $this->anio,
-            "tipo" => $this->tipo,
-            "porcentajeAlcohol" => $this->porcentajeAlcohol
+            ":nombre" => $this->nombre,
+            ":descripcion" => $this->descripcion,
+            ":anio" => $this->anio,
+            ":tipo" => $this->tipo,
+            ":porcentajeAlcohol" => $this->porcentajeAlcohol
         ));
         
         $this->conexion = null;

@@ -36,19 +36,17 @@
             Nombre: <input type="text" name="nombre" class="form-control" disabled value="<?php echo $data['vino']->nombre; ?>"/>
             Descripcion: <input type="text" name="descripcion"  disabled class="form-control" value="<?php echo $data['vino']->descripcion;?>"/>
             Año: <input type="text" name="anio" class="form-control" disabled  value="<?php echo $data['vino']->anio;?>"/>
-            Tipo: <input type="text" name="tipo" class="form-control" disabled value="<?php echo $data['vino']->tipo;?>"/>
+            Tipo: <input type="text" name="tipo" class="form-control" disabled value="<?php echo $data['vino']->tipo;?>" placeholder="tinto/blanco/rosado"/>
             Porcentaje de Alcohol: <input type="text" name="porcentajeAlcohol" class="form-control" disabled value="<?php echo $data['vino']->porcentajeAlcohol;?>"/>
         <input type="hidden" value="Guardar" class="btn btn-success" id="guardar"/>   
         </form>
             <hr>
         <button class="btn btn-success" id="editar">Editar</button>     
-        <a href="Location: index.php?controller=bodegas&action=detalleBodega&id=<?php echo $data['vino']->idBodega; ?>" class="btn btn-primary">Volver</a>    
+        <a href="index.php?controller=bodegas&action=detalleBodega&id=<?php echo $data['vino']->idBodega; ?>" class="btn btn-primary">Volver</a>    
 
-
-	
         <footer class="container">
             <hr/>
-           Ejemplo PHP + PDO + POO + MVC - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>
+           Ejercicio_mvc_Bodegas - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>
         </footer>
     </body>
 </html>

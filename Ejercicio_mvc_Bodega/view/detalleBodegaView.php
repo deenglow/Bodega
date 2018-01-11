@@ -37,9 +37,9 @@
             Email: <input type="text" name="email" class="form-control" value="<?php echo $data["bodega"]->email;?>" disabled/>
             Telefono: <input type="text" name="telefono" class="form-control" value="<?php echo $data["bodega"]->telefono;?>" disabled/>
             Nombre Persona de Contacto: <input type="text" name="nombrePersonaContacto" class="form-control" value="<?php echo $data["bodega"]->nombreContacto;?>" disabled/>
-            Fecha fundacion: <input type="text" name="fechaFundacion" class="form-control" value="<?php echo $data["bodega"]->fechaFundacion;?>" disabled/>
-            Tiene Restaurante: <input type="text" name="hasRestaurante" class="form-control" value="<?php echo $data["bodega"]->hasRestaurante;?>" disabled/>
-            Tiene Hotel: <input type="text" name="hasHotel" class="form-control" value="<?php echo $data["bodega"]->hasHotel;?>" disabled/>
+            Fecha fundacion: <input type="text" name="fechaFundacion" class="form-control" value="<?php echo $data["bodega"]->fechaFundacion;?>" placeholder="aaaa/mm/dd" disabled/>
+            Tiene Restaurante: <input type="text" name="hasRestaurante" class="form-control" value="<?php echo $data["bodega"]->hasRestaurante;?>" placeholder="Si/No" disabled/>
+            Tiene Hotel: <input type="text" name="hasHotel" class="form-control" value="<?php echo $data["bodega"]->hasHotel;?>" placeholder="Si/No" disabled/>
             <input type="hidden" value="Guardar" class="btn btn-success" id="guardar"/>   
         </form>
             <hr>
@@ -53,8 +53,8 @@
                 Nombre: <?php echo $vino["nombre"]; ?> -
                 Tipo: <?php echo $vino["tipo"]; ?> -
                 Porcentaje de Alcohol: <?php echo $vino["porcentajeAlcohol"]; ?> %&nbsp;
-                <a href="index.php?controller=vinos&action=delete&id=<?php echo $vino['idVino']; ?>&idBodega=<?php echo $data["bodega"]->idBodega;?>" class="btn btn-success">Eliminar</a>&nbsp;
-                <a href="index.php?controller=vinos&action=detalleVino&id=<?php echo $vino['idVino']; ?>" class="btn btn-success">
+                <a href="index.php?controller=vinos&action=delete&id=<?php echo $vino['idVino']; ?>&idBodega=<?php echo $data["bodega"]->idBodega;?>" class="btn btn-danger">Eliminar</a>&nbsp;
+                <a href="index.php?controller=vinos&action=detalleVino&id=<?php echo $vino['idVino']; ?>" class="btn btn-info">
                 Detalle</a>
                 <hr/>
             <?php } ?>
@@ -65,7 +65,7 @@
 	
         <footer class="container">
             <hr/>
-           Ejemplo PHP + PDO + POO + MVC - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>
+           Ejercicio_mvc_Bodegas - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>
         </footer>
     </body>
 </html>

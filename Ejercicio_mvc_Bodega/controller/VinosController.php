@@ -68,14 +68,18 @@ class VinosController{
         if(!isset($_GET["actualizar"])){          
              //Creamos un usuario
             $vino=new Vino($this->conexion);
+            $vino->setIdVino($_GET['id']);
             $vino->setNombre($_POST["nombre"]);
             $vino->setDescripcion($_POST["descripcion"]);
             $vino->setAnio($_POST["anio"]);
             $vino->setTipo($_POST["tipo"]);
             $vino->setPorcentajeAlcohol($_POST["porcentajeAlcohol"]);
-            
-            
+
             $actualizar=$vino->actualizar();
+            
+            header('Location: index.php?controller=vinos&action=detalleVino&id='.$vino->getIdVino());
+            
+            
         }
         
     }
@@ -94,10 +98,10 @@ class VinosController{
        if(!isset($_GET["detalleVino"])){
            
             //Creamos el objeto empleado
-            $v=new Vino($this->conexion);
-            $id=$_GET["id"];
+            $vinos=new Vino($this->conexion);
+          
             //Conseguimos todos los empleados
-            $vino=$v->getVinoById($id);
+            $vino=$vinos->getVinoById($_GET['id']);
 
             //Cargamos la vista index y le pasamos valores
             $this->view("detalleVino",array(

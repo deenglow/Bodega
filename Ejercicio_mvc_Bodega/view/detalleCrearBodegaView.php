@@ -26,9 +26,15 @@
             Email: <input type="text" name="email" class="form-control"/>
             Telefono: <input type="text" name="telefono" class="form-control"/>
             Nombre Persona de Contacto: <input type="text" name="nombrePersonaContacto" class="form-control"/>
-            Fecha fundacion: <input type="text" name="fechaFundacion" class="form-control"/>
-            Tiene Restaurante: <input type="text" name="hasRestaurante" class="form-control"/>
-            Tiene Hotel: <input type="text" name="hasHotel" class="form-control"/>
+            Fecha fundacion: <input type="date" name="fechaFundacion" class="form-control"/>
+            Tiene Restaurante: <select name="hasRestaurante" class="form-control">
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                               </select>
+            Tiene Hotel:<select name="hasHotel" class="form-control">
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                        </select>
             <input type="submit" value="enviar" class="btn btn-success"/>   
         </form>
         <a href="index.php?controller=bodegas&action=index" class="btn btn-primary">Volver</a>    
