@@ -13,10 +13,6 @@ class VinosController{
 
     }
 
-   /**
-    * Ejecuta la acción correspondiente.
-    *
-    */
     public function run($accion){
         switch($accion)
         { 
@@ -40,13 +36,6 @@ class VinosController{
         }
     }
     
-
-    
-   /**
-    * Crea un nuevo empleado a partir de los parámetros POST 
-    * y vuelve a cargar el index.php.
-    *
-    */
     public function crear(){
         if(isset($_POST["nombre"])){
 
@@ -63,10 +52,8 @@ class VinosController{
         header('Location: index.php?controller=bodegas&action=detalleBodega&id='.$vino->getIdBodega());
     }
    
-    //FUNCION ACTUALIZAR
     public function actualizar(){
         if(!isset($_GET["actualizar"])){          
-             //Creamos un usuario
             $vino=new Vino($this->conexion);
             $vino->setIdVino($_GET['id']);
             $vino->setNombre($_POST["nombre"]);
@@ -87,23 +74,18 @@ class VinosController{
     public function detalleCrearVino(){
         if(!isset($_GET["detalleCrearVino"])){
             $id=$_GET["id"];
-            //Cargamos la vista index y le pasamos valores
             $this->view("detalleCrearVino",$id);
         }
         
     }   
-    
-    
+       
     public function detalleVino(){
        if(!isset($_GET["detalleVino"])){
-           
-            //Creamos el objeto empleado
+
             $vinos=new Vino($this->conexion);
-          
-            //Conseguimos todos los empleados
+
             $vino=$vinos->getVinoById($_GET['id']);
 
-            //Cargamos la vista index y le pasamos valores
             $this->view("detalleVino",array(
                 "vino"=>$vino,
                 "titulo" => "INFO VINO"
@@ -114,20 +96,15 @@ class VinosController{
         
     }
 
-    //FUNCION DELETE
     public function delete (){
         if(!isset($_GET["delete"])){
             $vino=new Vino($this->conexion);
             $vino->delete($_GET["id"]);
-            
+
             header('Location: index.php?controller=bodegas&action=detalleBodega&id='.$_GET["idBodega"]);
         }   
     }
     
-   /**
-    * Crea la vista que le pasemos con los datos indicados.
-    *
-    */
     public function view($vista,$datos){
         $data = $datos;  
         require_once  __DIR__ . "/../view/" . $vista . "View.php";

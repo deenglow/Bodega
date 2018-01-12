@@ -12,11 +12,7 @@ class BodegasController{
         $this->conexion=$this->conectar->conexion();
 
     }
-
-   /**
-    * Ejecuta la acción correspondiente.
-    *
-    */
+    
     public function run($accion){
         switch($accion)
         { 
@@ -44,32 +40,22 @@ class BodegasController{
         }
     }
     
-   /**
-    * Carga la página principal de empleados con la lista de
-    * empleados que consigue del modelo.
-    *
-    */ 
+
     public function index(){
         
-        //Creamos el objeto empleado
         $bodega=new Bodega($this->conexion);
         
-        //Conseguimos todos los empleados
         $bodegas=$bodega->getAll();
        
-        //Cargamos la vista index y le pasamos valores
         $this->view("index",array(
             "bodegas"=>$bodegas,
             "titulo" => "BODEGA"
         ));
     }
 
-
-    //CARGA LA VISTA DETALLE
-     public function detalleCrearBodega(){
+    public function detalleCrearBodega(){
         if(!isset($_GET["detalleCrearBodega"])){
             
-            //Cargamos la vista index y le pasamos valores
             $this->view("detalleCrearBodega",null);
             
 
@@ -82,15 +68,12 @@ class BodegasController{
            
             include './model/Vino.php';
 
-            //Creamos el objeto empleado
             $bodega=new Bodega($this->conexion);
             $vino=new Vino($this->conexion);
-        
-            //Conseguimos todos los empleados
+            
             $bodegaSeleccionada=$bodega->getBodega($_GET["id"]);
             $listaVinos=$vino->getAll($_GET["id"]);
 
-            //Cargamos la vista index y le pasamos valores
             $this->view("detalleBodega",array(
                 "bodega"=>$bodegaSeleccionada,
                 "vinos"=>$listaVinos,
@@ -102,15 +85,8 @@ class BodegasController{
         
     }
 
-    
-   /**
-    * Crea un nuevo empleado a partir de los parámetros POST 
-    * y vuelve a cargar el index.php.
-    *
-    */
     public function crear(){
         if(isset($_POST["direccion"])){
-            //Creamos un usuario
             $bodega=new Bodega($this->conexion);
             $bodega->setDireccion($_POST["direccion"]);
             $bodega->setNombre($_POST["nombre"]);
@@ -125,10 +101,8 @@ class BodegasController{
         header('Location: index.php');
     }
    
-    //FUNCION ACTUALIZAR
     public function actualizar(){
         if(!isset($_GET["actualizar"])){          
-             //Creamos un usuario
             $bodega=new Bodega($this->conexion);
             $bodega->setIdBodega($_GET["id"]);
             $bodega->setDireccion($_POST["direccion"]);
@@ -148,7 +122,6 @@ class BodegasController{
 
     }
 
-    //FUNCION DELETE
     public function delete (){
         if(!isset($_GET["delete"])){
             $bodega=new Bodega($this->conexion);
@@ -158,11 +131,6 @@ class BodegasController{
         header('Location: index.php');
     }
     
-    
-   /**
-    * Crea la vista que le pasemos con los datos indicados.
-    *
-    */
     public function view($vista,$datos){
         $data = $datos;  
         require_once  __DIR__ . "/../view/" . $vista . "View.php";

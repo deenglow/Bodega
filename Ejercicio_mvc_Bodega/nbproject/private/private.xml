@@ -5,11 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/view/detalleCrearBodegaView.php</file>
             <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/index.php</file>
-            <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/model/vino.php</file>
             <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/view/detalleBodegaView.php</file>
             <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/view/detalleCrearVinoView.php</file>
             <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/view/detalleVinoView.php</file>
-            <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/controller/VinosController.php</file>
             <file>file:/C:/xampp/htdocs/Ejercicio_mvc_Bodega/view/indexView.php</file>
         </group>
     </open-files>

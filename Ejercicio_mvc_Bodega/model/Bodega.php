@@ -1,6 +1,5 @@
 <?php
 
-
 class Bodega {
     private $table = "bodegas";
     private $conexion;
@@ -96,9 +95,8 @@ class Bodega {
 
         $consulta = $this->conexion->prepare("SELECT idBodega, direccion, nombre, email, telefono, nombreContacto, fechaFundacion, hasRestaurante, hasHotel FROM  " . $this->table);
         $consulta->execute();
-        /* Fetch all of the remaining rows in the result set */
         $resultados = $consulta->fetchAll();
-        $this->conexion = null; //cierre de conexión
+        $this->conexion = null; 
         return $resultados;
 
     }
@@ -132,9 +130,8 @@ class Bodega {
      public function getBodega($id){
         $consulta = $this->conexion->prepare("SELECT idBodega, direccion, nombre, email, telefono, nombreContacto, fechaFundacion, hasRestaurante, hasHotel FROM  " . $this->table ." WHERE idBodega = " . $id );
         $consulta->execute();
-        /* Fetch all of the remaining rows in the result set */
         $resultados = $consulta->fetchObject();
-        $this->conexion = null; //cierre de conexión
+        $this->conexion = null;
         return $resultados;
 
     }

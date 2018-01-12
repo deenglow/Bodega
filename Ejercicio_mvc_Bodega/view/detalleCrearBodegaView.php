@@ -43,7 +43,7 @@
 	
         <footer class="container">
             <hr/>
-           Ejemplo PHP + PDO + POO + MVC - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>
+           Ejercicio_mvc_Bodegas - David Ramirez - <a href="#">dramirez.es</a> - Copyright &copy; <?php echo  date("Y"); ?>
         </footer>
     </body>
 </html>

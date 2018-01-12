@@ -1,6 +1,4 @@
 <?php
-
-
 class Vino {
     private $table = "vinos";
     private $conexion;
@@ -81,9 +79,8 @@ class Vino {
 
         $consulta = $this->conexion->prepare("SELECT idVino, nombre, descripcion, anio, tipo, porcentajeAlcohol FROM " .$this->table. " WHERE idBodega = " . $id);
         $consulta->execute();
-        /* Fetch all of the remaining rows in the result set */
         $resultados = $consulta->fetchAll();
-        $this->conexion = null; //cierre de conexión
+        $this->conexion = null; 
         return $resultados;
 
     }
@@ -92,9 +89,8 @@ class Vino {
 
         $consulta = $this->conexion->prepare("SELECT idVino, nombre, descripcion, anio, tipo, porcentajeAlcohol , idBodega FROM " .$this->table. " WHERE idVino = " . $id);
         $consulta->execute();
-        /* Fetch all of the remaining rows in the result set */
         $resultados = $consulta->fetchObject();
-        $this->conexion = null; //cierre de conexión
+        $this->conexion = null; 
         return $resultados;
 
     }
@@ -128,7 +124,7 @@ class Vino {
     }
     
         public function actualizar() {
-            $consulta = $this->conexion->prepare("UPDATE vinos SET  nombre = :nombre, descripcion = :descripcion, anio = :anio, tipo = :tipo, porcentajeAlcohol = :porcentajeAlcohol WHERE idVino = " . $this->idVino);
+        $consulta = $this->conexion->prepare("UPDATE vinos SET  nombre = :nombre, descripcion = :descripcion, anio = :anio, tipo = :tipo, porcentajeAlcohol = :porcentajeAlcohol WHERE idVino = " . $this->idVino);
         $actualizar = $consulta->execute(array(
             ":nombre" => $this->nombre,
             ":descripcion" => $this->descripcion,
